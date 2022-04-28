@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+<script>
+class Create_New_Node 
+{
+    constructor(val)
+    {
+        this.value= val;
+        this.left_Child_value = null;
+        this.right_Child_value = null;
+    }
+
+}
+
+class preOrdertraversal_class
+{
+    constructor(root_Value) 
+    {
+        this.root_node = new Create_New_Node(root_Value);
+    }
+    insert_value(current_Node_value, new_Value) 
+    {
+        if (current_Node_value=== null) 
+        {
+            current_Node_value= new Create_New_Node(new_Value);
+        } 
+        else if (new_Value < current_Node_value.value) 
+        {
+            current_Node_value.left_Child_value = this.insert_value(current_Node_value.left_Child_value, new_Value);
+        } 
+        else 
+        {
+            current_Node_value.right_Child_value = this.insert_value(current_Node_value.right_Child_value, new_Value);
+        }
+        return current_Node_value;
+    }
+    insert_node(new_Value) 
+    {
+        if(this.root_node==null)
+        {
+            this.root_node=new Create_New_Node(new_Value);
+            return;
+        }
+        this.insert_value(this.root_node, new_Value);
+    }
+   preOrdertraversal_Function(current_Node_value) 
+    {
+        if (current_Node_value!== null) 
+        {  
+            document.write(current_Node_value.value+" ");
+            this. preOrdertraversal_Function(current_Node_value.left_Child_value);
+          
+            this. preOrdertraversal_Function(current_Node_value.right_Child_value);
+        }
+
+    }
+
+
+}
+var a = new preOrdertraversal_class(10);
+a.insert_node(15);
+a.insert_node(5);
+a.insert_node(11);
+a.insert_node(2);
+a.insert_node(6);
+a.insert_node(12);
+
+a. preOrdertraversal_Function(a.root_node);
+            
+</script>
+</body>
+</html>
